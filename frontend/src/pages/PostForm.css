@@ -1,0 +1,121 @@
+.post-form-container {
+  padding: 40px 0;
+  background-color: var(--bg-light);
+  min-height: calc(100vh - 80px);
+}
+
+.post-form-header {
+  margin-bottom: 40px;
+  padding: 30px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px;
+  color: white;
+  box-shadow: var(--shadow-md);
+}
+
+.post-form-header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.post-form-header p {
+  font-size: 16px;
+  opacity: 0.9;
+}
+
+.post-form-card {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  padding: 40px;
+}
+
+.post-form-card .form-group {
+  margin-bottom: 24px;
+}
+
+.post-form-card label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--text-dark);
+  font-size: 14px;
+}
+
+.post-form-card input,
+.post-form-card textarea,
+.post-form-card select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  resize: vertical;
+}
+
+.post-form-card input:focus,
+.post-form-card textarea:focus,
+.post-form-card select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.post-form-card textarea {
+  min-height: 150px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-end;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-color);
+  margin-top: 32px;
+}
+
+.form-actions .btn {
+  padding: 12px 32px;
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  .post-form-container {
+    padding: 20px 0;
+  }
+
+  .post-form-header {
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .post-form-header h1 {
+    font-size: 24px;
+  }
+
+  .post-form-card {
+    padding: 20px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    justify-content: stretch;
+  }
+
+  .form-actions .btn {
+    width: 100%;
+  }
+}

@@ -1,0 +1,25 @@
+package com.healthblog.dto;
+
+import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class PostRequest {
+    
+    @NotBlank(message = "Title is required")
+    private String title;
+    
+    @NotBlank(message = "Content is required")
+    private String content;
+    
+    private String summary;
+    
+    private String category;
+    
+    @NotBlank(message = "Status is required")
+    private String status; // "Draft" or "Published"
+}
