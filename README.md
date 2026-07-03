@@ -15,6 +15,55 @@ A full-stack web application built with **Spring Boot**, **React**, and **MySQL/
 
 ---
 
+## 📚 Technologies Used
+
+### Backend
+- **Spring Boot 3.2** - Web framework
+- **Spring Security** - Authentication & authorization
+- **Spring Data JPA** - Database operations
+- **JJWT 0.12.3** - JWT token management
+- **H2 Database** - File-based database
+- **Lombok** - Code generation (annotations)
+- **Maven** - Dependency management
+
+### Frontend
+- **React 18** - UI framework
+- **Vite 5** - Build tool (fast development)
+- **React Router v6** - Client-side routing
+- **Axios** - HTTP client
+- **CSS3** - Styling (vanilla CSS, responsive)
+
+---
+
+## 📖 How to Use the Application
+
+### As a Doctor
+
+1. **Sign Up**: Click "Sign Up" → Select "Doctor" → Fill form
+2. **Login**: Enter credentials → Select "Doctor" → Login
+3. **Write Article**: 
+   - Click "✍️ Write" button
+   - Fill title, content, select category
+   - Choose "Draft" or "Published"
+   - Click "Publish Article"
+4. **Manage Articles**:
+   - View all published articles in dashboard
+   - Click "📝 Draft Articles" to see unpublished articles
+   - Edit articles: Click "Edit"
+   - Delete articles: Click "Delete"
+5. **View Single Article**: Click "Read More" on any article
+
+### As a Patient
+
+1. **Sign Up**: Click "Sign Up" → Select "Patient" → Fill form
+2. **Login**: Enter credentials → Select "Patient" → Login
+3. **Explore Articles**:
+   - See all published articles from doctors
+   - Click "Read More" to read full article
+   - Filter by category using buttons at top
+4. **View Author**: Each article shows doctor's name and date
+
+
 ## 🚀 Quick Start Guide
 
 ### Prerequisites
@@ -123,32 +172,6 @@ GET  /api/categories/{name}/posts - Get posts by category
 
 ---
 
-## 👥 User Roles & Features
-
-### 👨‍⚕️ Doctor Account
-- Create health articles
-- Save articles as drafts or publish immediately
-- Edit own articles
-- Delete own articles
-- View published and draft articles
-- Assign categories to articles
-
-**Test Doctor Account**:
-- Email: `doctor@example.com` (Create your own in signup)
-- Password: Any password you set
-
-### 👤 Patient Account
-- View all published articles from doctors
-- Read full article content
-- Filter articles by categories
-- Cannot create or edit articles
-
-**Test Patient Account**:
-- Email: `patient@example.com` (Create your own in signup)
-- Password: Any password you set
-
----
-
 ## 🔐 Authentication Flow
 
 1. **Signup**: User registers with email, password, and role (Doctor/Patient)
@@ -157,12 +180,6 @@ GET  /api/categories/{name}/posts - Get posts by category
 4. **Request**: Frontend sends token in `Authorization: Bearer {token}` header
 5. **Validation**: Backend validates token before processing requests
 6. **Expiry**: Token expires in 24 hours, user must login again
-
-### Example Request with Token
-```bash
-curl -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-     http://localhost:8080/api/posts
-```
 
 ---
 
@@ -242,116 +259,6 @@ curl -X POST http://localhost:8080/api/auth/signup \
     "userType": "Doctor"
   }'
 ```
-
----
-
-## 🐛 Troubleshooting
-
-### Backend won't start
-```bash
-# Clear Maven cache
-rm -rf ~/.m2/repository
-./mvnw clean install
-
-# Check Java version
-java -version  # Should be 17+
-
-# Kill process on port 8080 if needed
-lsof -i :8080
-kill -9 <PID>
-```
-
-### Frontend won't start
-```bash
-# Clear Node modules and reinstall
-rm -rf node_modules
-npm install
-
-# Check Node version
-node -v  # Should be 16+
-
-# Kill process on port 5173 if needed
-lsof -i :5173
-kill -9 <PID>
-```
-
-### Cannot login
-- Make sure **both backend and frontend** are running
-- Check that your email/password are correct
-- Verify user role (Doctor/Patient) matches
-- Check browser console for error messages
-
-### CORS errors
-- Backend already configured for CORS at `http://localhost:5173`
-- If using different URL, update `app.jwt.secret` in `application.properties`
-
----
-
-## 🚀 Deployment Guide
-
-### Deploy Backend to Production
-1. **Build**: `./mvnw clean package`
-2. **Run**: `java -jar target/healthblog-0.0.1-SNAPSHOT.jar`
-3. **Database**: Switch to PostgreSQL (modify `application.properties`)
-4. **JWT Secret**: Use strong random secret in environment variable
-5. **CORS**: Update allowed origins
-
-### Deploy Frontend to Production
-1. **Build**: `npm run build`
-2. **Output**: Check `dist/` directory
-3. **Host**: Deploy on Netlify, Vercel, or any static host
-4. **Environment**: Update API_BASE_URL to production backend
-
----
-
-## 📚 Technologies Used
-
-### Backend
-- **Spring Boot 3.2** - Web framework
-- **Spring Security** - Authentication & authorization
-- **Spring Data JPA** - Database operations
-- **JJWT 0.12.3** - JWT token management
-- **H2 Database** - File-based database
-- **Lombok** - Code generation (annotations)
-- **Maven** - Dependency management
-
-### Frontend
-- **React 18** - UI framework
-- **Vite 5** - Build tool (fast development)
-- **React Router v6** - Client-side routing
-- **Axios** - HTTP client
-- **CSS3** - Styling (vanilla CSS, responsive)
-
----
-
-## 📖 How to Use the Application
-
-### As a Doctor
-
-1. **Sign Up**: Click "Sign Up" → Select "Doctor" → Fill form
-2. **Login**: Enter credentials → Select "Doctor" → Login
-3. **Write Article**: 
-   - Click "✍️ Write" button
-   - Fill title, content, select category
-   - Choose "Draft" or "Published"
-   - Click "Publish Article"
-4. **Manage Articles**:
-   - View all published articles in dashboard
-   - Click "📝 Draft Articles" to see unpublished articles
-   - Edit articles: Click "Edit"
-   - Delete articles: Click "Delete"
-5. **View Single Article**: Click "Read More" on any article
-
-### As a Patient
-
-1. **Sign Up**: Click "Sign Up" → Select "Patient" → Fill form
-2. **Login**: Enter credentials → Select "Patient" → Login
-3. **Explore Articles**:
-   - See all published articles from doctors
-   - Click "Read More" to read full article
-   - Filter by category using buttons at top
-4. **View Author**: Each article shows doctor's name and date
-
 ---
 
 ## 🔒 Security Features
@@ -362,17 +269,6 @@ kill -9 <PID>
 ✅ **Authorization** - Role-based and author-based checks
 ✅ **HTTPS Ready** - Works with SSL/TLS
 ✅ **Input Validation** - Server-side validation on all inputs
-
----
-
-## 📞 Support
-
-For issues or questions:
-1. Check browser console for error messages
-2. Check backend logs in terminal
-3. Verify both backend and frontend are running
-4. Check that ports 8080 and 5173 are available
-5. Clear browser cache and localStorage if needed
 
 ---
 
